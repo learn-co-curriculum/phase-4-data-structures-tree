@@ -10,12 +10,12 @@
 
 ## Introduction
 
-The next data structure we'll be learning about is the **tree**. A tree has some similarities to a linked list: both consists of node, each
-of which has a value and a reference to other nodes. Unlike a linked
-list, however, which only points to a single "next" node, nodes in trees can
-point to multiple child nodes. For this reason, a tree can be used to represent
-more complex data relationships than can be expressed using a linked list or
-other linear data structure.
+The next data structure we'll be learning about is the **tree**. A tree has some
+similarities to a linked list: both consist of nodes, each of which has a value
+and a reference to other nodes. Unlike a linked list, however, which only points
+to a single "next" node, nodes in trees can point to multiple child nodes. For
+this reason, a tree can be used to represent more complex data relationships
+than can be expressed using a linked list or other linear data structure.
 
 ## Trees, Binary Trees, and Binary Search Trees
 
@@ -30,7 +30,7 @@ A **tree** is a data structure that consists of a **node** (called the **root**
 node) that can have zero or more **child** nodes. Each child node can, in turn,
 have zero or more children of its own:
 
-![tree](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/tree.png)
+![tree](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/tree.png)
 
 When we represent a tree in code, each of its nodes will have two attributes: a
 value or data of some sort and an array containing a list of references to its
@@ -39,7 +39,7 @@ are integers, the value of a node can be of any data type.
 
 Say we have the following very simple tree that we need to represent in code:
 
-![simple tree](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/simple-tree.png)
+![simple tree](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/simple-tree.png)
 
 Each node in our tree would be a hash containing key/value pairs for the two
 attributes:
@@ -75,7 +75,7 @@ root_node[:children][0]
 
 If we were to add a child node to `child_one`, with a value of 45:
 
-![simple tree with new child](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/simple-tree-with-child.png)
+![simple tree with new child](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/simple-tree-with-child.png)
 
 The updated code would look like this:
 
@@ -109,7 +109,7 @@ root_node = {
 A **binary tree** is a special kind of tree in which each node has at most two
 child nodes, referred to as the **left** child and **right** child.
 
-![binary tree](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/binary-tree.png)
+![binary tree](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/binary-tree.png)
 
 Each node in a binary tree has three attributes: a `value`, and references to
 its `left_child` and `right_child`. If a node doesn't have either or both of
@@ -118,7 +118,7 @@ these child nodes, the attributes will be set to `nil`.
 We can revisit the simple example we used above because that tree also meets the
 definition of a binary tree:
 
-![simple tree with new child](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/simple-tree-with-child.png)
+![simple tree with new child](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/binary-tree-simple.png)
 
 To represent that same structure as a binary tree, the code would look like
 this:
@@ -156,7 +156,7 @@ value of a node's left child (if it has one) must be less than the value of the
 node itself, and the value of its right child (if it has one) must be greater
 than the value of the node itself:
 
-![binary search tree](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/binary-search-tree.png)
+![binary search tree](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/binary-search-tree.png)
 
 If you look at the nodes in the diagram above, you will see that they all meet
 the constraints: each left child's value is less its parent's value, and each
@@ -166,7 +166,7 @@ right child's value is greater than its parent's value. However, while this is
 node are less than the parent node. You can see this in the highlighted portion
 of this diagram:
 
-![bst left side highlighted](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/bst-left-side-highlighted.png)
+![bst left side highlighted](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/bst-left-side-highlighted.png)
 
 Notice that all the values in the left half of the diagram are less than 50, the
 value of the root node. And, if you take a look at the right half of the
@@ -177,25 +177,25 @@ subtrees.
 
 Let's take a look at another example:
 
-![invalid bst](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/invalid-bst.png)
+![invalid bst](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/invalid-bst.png)
 
 First, we'll look at each individual node and its children — so far so good.
 Each left child is less than its parent and each right child is greater than its
 parent. So now let's look at the left side overall:
 
-![invalid bst left side highlighted](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/invalid-bst-left-side-highlighted.png)
+![invalid bst left side highlighted](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/invalid-bst-left-side-highlighted.png)
 
 Still good: all the values in the left half of the tree are less than the root
 node's value. But now, what if we repeat the process for the **subtree** with
 the root node that has a value of 77:
 
-![invalid bst left subtree](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/invalid-bst-left-subtree.png)
+![invalid bst left subtree](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/invalid-bst-left-subtree.png)
 
 The values of both "left descendants" are less than 77, but **not** all the
 "right descendants" are greater than 77. If you take another look at the full
 tree, you'll see a similar issue on the right side:
 
-![invalid bst with errors highlighted](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/invalid-bst-errors-highlighted.png)
+![invalid bst with errors highlighted](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/invalid-bst-errors-highlighted.png)
 
 So what benefit is there to constructing a tree with these rigid constraints? If
 you think about it from the point of view of searching, it makes sense. Say we
@@ -209,7 +209,7 @@ the tree.
 This is, in fact, the whole point of binary search trees. Let's take another
 look at our earlier, valid, example:
 
-![binary search tree](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/binary-search-tree.png)
+![binary search tree](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/binary-search-tree.png)
 
 Say we wanted to search this tree for the value 25. The process would take four
 steps:
@@ -330,7 +330,7 @@ than linear O(n) or quadratic O(n²) time:
 log base 2 of a number is the number of times you can divide that number by 2
 until you get to 1 or less. For example, log₂16 = 4:
 
-![log base 2](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/log-base-2.png)
+![log base 2](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/log-base-2.png)
 
 This process of repeatedly dividing by 2 may remind you of how we described the
 binary search process — that's where the name came from!
@@ -338,7 +338,7 @@ binary search process — that's where the name came from!
 _**However**_, there is a big caveat here — the O(log n) is **not** guaranteed.
 Let's take a look at an example:
 
-![Unbalanced bst](https://curriculum-content.s3.amazonaws.com/phase4/data-structures-stack/unbalanced-bst.png)
+![Unbalanced bst](https://curriculum-content.s3.amazonaws.com/phase-4/phase-4-data-structures-tree/unbalanced-bst.png)
 
 This is a **valid** binary search tree! All of the `right_child` nodes have
 values greater than the value of their parent; there is no requirement that
@@ -364,10 +364,13 @@ learn about different methods of tree **traversal**.
 
 ## Resources
 
-- [Tree Structure](https://en.wikipedia.org/wiki/Tree_structure)
-- [Tree (Data Structure)](https://en.wikipedia.org/wiki/Tree_(data_structure))
-- [Binary Search Tree](https://en.wikipedia.org/wiki/Binary_search_tree)
+- [Tree Structure][tree-structure]
+- [Tree (Data Structure)][tree-data-structure]
+- [Binary Search Tree][binary-search-tree]
 
 [dom]: https://en.wikipedia.org/wiki/Document_Object_Model
 [decision-trees]: https://en.wikipedia.org/wiki/Decision_tree
 [types-of-trees]: https://en.wikipedia.org/wiki/List_of_data_structures#Trees
+[tree-structure]: https://en.wikipedia.org/wiki/Tree_structure
+[tree-data-structure]: https://en.wikipedia.org/wiki/Tree_(data_structure)
+[binary-search-tree]: https://en.wikipedia.org/wiki/Binary_search_tree
